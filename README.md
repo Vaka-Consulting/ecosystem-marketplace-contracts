@@ -99,14 +99,29 @@ See full structure documentation in [docs/project_structure/README.md](./docs/pr
 
 ### Configure for Contract Deployment
 
-1.  Configure `marketplace.config.json`:
+1. Wallet creation if you need to crate new: [How to create wallet](https://developers.cardano.org/docs/integrate-cardano/creating-wallet-faucet/)
+   ```bash
+   mkdir local/testnet -p
+
+   cardano-cli address key-gen \
+      --verification-key-file ./local/testnet/marketplace_deploy.vkey \
+      --signing-key-file ./local/testnet/marketplace_deploy.skey
+
+   cardano-cli address build \
+      --payment-verification-key-file ./local/testnet/marketplace_deploy.vkey \
+      --out-file ./local/testnet/marketplace_deploy.addr \
+      --testnet-magic 1
+
+   cat ./local/testnet/marketplace_deploy.addr
+   ```
+2.  Configure `marketplace.config.json`:
 
     ```json
     {
       "network": "preprod",
       "signer": "./local/testnet/marketplace_deploy.skey",
       "owner_address": "addr***",
-      "blockfrostProjectId": "<api key from blockfrost>", // Optional: Leave as non-string for Koios
+      "blockfrostProjectId": "<api key from blockfrost>", // Optional: Leave as non-string(null) for Koios
       "feeNumerator": 250000, // 2.5% fee (250000 / 1000000)
       "paymentAsset": {
         "policy": "<token_policy>",
@@ -124,7 +139,7 @@ See full structure documentation in [docs/project_structure/README.md](./docs/pr
       - `"feeNumerator"`: Initial fee for the `feeOracle` (0-1000000, where 1000000 = 100%).  A quick way to calculate your `feeNumerator` is to multiply the percentage by 10,000.  For example, for 2.5%, calculate `2.5 * 10000 = 25000`.
       - `"paymentAsset"`: Policy ID and token name (in hex) of the payment asset.
 
-2. **Run Tests**
+3. Run Tests
 
     ```bash
     npm run test-al
@@ -135,7 +150,7 @@ See full structure documentation in [docs/project_structure/README.md](./docs/pr
     ```
     ![empowa-marketplace-unit-tests.gif](test/assets/images/empowa-marketplace-unit-tests.gif)
 
-3.  **Deploy Marketplace**
+4.  Deploy Marketplace
 
     Ensure the owner wallet has at least 30 ADA (10 ADA is deposited into the smart contract, and another 10 is for the feeOracle NFT).
 
