@@ -7,17 +7,17 @@ Smart contracts powering the ecosystem marketplace. This repository contains the
 
 ## 📚 Table of Contents
 
-- [🚀 Getting Started](🚀-getting-started)
+- 🚀 Getting Started
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [🔭 Project Overview](#🔭-project-overview)
-- [🏗 Contract Architecture](#🏗-contract-architecture)
-- [📂 Project Structure](#📂-project-structure)
-- [🛠 Usage](#🛠-usage)
+- 🔭 Project Overview
+- 🏗 Contract Architecture
+- 📂 Project Structure
+- 🛠 Usage
   - [Configure for Contract Deployment](#configure-for-contract-deployment)
   - [Deploy Marketplace](#deploy-marketplace)
-- [🤝 Contributing](#🤝-contributing)
-- [📜 License](#📜-license)
+- 🤝 Contributing
+- 📜 License
 
 ## 🚀 Getting Started
 
