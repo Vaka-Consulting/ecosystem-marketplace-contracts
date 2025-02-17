@@ -63,6 +63,10 @@ void async function main()
 
     tx.signWith( privateKey );
 
+    const asset = tx.body.outputs[0].value.map.find(f=>f.policy!="" && f.assets.find(f=>f.quantity==1));
+
+    const feeOraceNFTPolicy = asset?.policy.toString();
+
     let txHash = await submitTx( tx );
 
     console.log([
@@ -91,8 +95,8 @@ void async function main()
         `submitted tx that deploys the feeOracle contract;`,
         `tx hash: ${txHash}`,
         `source was deployed to utxo: ${txHash}#0`,
-        `at the feeOracleAddress: ${tx.body.outputs[0].address};`,
-        `the oracle utxo is: ${txHash}#1`,
+        `at the feeOracleAddress: ${tx.body.outputs[0].address}`,
+        `fee oracle NFT policy : ${feeOraceNFTPolicy}`,
         `-------------------------------------------------------------------------`
     ].join("\n"));
 

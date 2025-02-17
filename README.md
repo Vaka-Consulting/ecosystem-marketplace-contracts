@@ -31,7 +31,7 @@ Smart contracts powering the ecosystem marketplace. This repository contains the
 1. Clone the repository:
 
    ```bash
-   git clone [https://github.com/Vaka-Consulting/ecosystem-marketplace-contracts.git](https://github.com/Vaka-Consulting/ecosystem-marketplace-contracts.git)
+   git clone https://github.com/Vaka-Consulting/ecosystem-marketplace-contracts.git
    cd ecosystem-marketplace-contracts
    ````
 
